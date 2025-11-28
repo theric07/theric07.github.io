@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Afficheur de nom</title>
+</head>
+<body>
+  <!-- Formulaire afficheur de nom -->
+  <form>
+    <h1>Formulaire afficheur de nom</h1>
+    <!-- textbox pour le prénom de l'élève -->
+    <label for="txtNom">Prénom:</label>
+    <input type="text" id="txtNom">
+    <br><br>
+
+    <!-- textbox pour le nom du milieu de l'élève -->
+    <label for="txtMilieu">Nom du milieu:</label>
+    <input type="text" id="txtMilieu">
+    <br><br>
+
+    <!-- textbox pour le nom de famille de l'élève -->
+    <label for="txtFamille">Nom de famille:</label>
+    <input type="text" id="txtFamille">
+    <br><br>
+
+    <!-- bouton pour le prénom de l'élève -->
+    <input type="button" id="btnSoumet" onclick="calculInitiales()"  value="Soumettres les initiales">
+    <br><br>
+
+    <!-- bouton pour le nom du milieu de l'élève -->
+    <input type="button" id="btnSoumet" onclick="calculNomComplet()"  value="Soumettre le nom au complet">
+    <br><br>
+
+    <!-- bouton pour le nom de famille de l'élève -->
+    <input type="button" id="btnSoumet" onclick="calculNomUtilisateur()"  value="Soumettre le nom d'utilisateur">
+    <br><br>
+
+    <!-- Création d'une section pour l'affichage des résultats -->
+     <br><br>
+    <div id="divAffiche">
+    </div>
+
+    <script>
+        //Chercher les données dans le formulaire
+        let affiche = document.getElementById("divAffiche")
+        let nom = document.getElementById("txtNom").value;
+        let milieu = document.getElementById("txtMilieu").value;
+        let famille = document.getElementById("txtFamille");
+
+        function calculInitiales() {
+            let initiale = (nom.charAt(0) + "." + milieu.charAt(0) + "." + famille.charAt(0) + ".");
+            let message1 = "Vos initiales sont : "+initiale.toUpperCase()+"";
+            affiche.innerHTML = message1;
+        }
+
+        function calculNomComplet() {
+            let prenomComplet = (nom.charAt(0).toUpperCase() + nom.slice(1).toLowerCase());
+            let nomDuMilieuComplet = (nomDuMilieu.charAt(0).toUpperCase() + nomDuMilieu.slice(1).toLowerCase());
+            let nomDeFamilleComplet =(nomDeFamille.charAt(0).toUpperCase() + nomDeFamille.slice(1).toLowerCase());
+            let complet = (prenomComplet + " " + nomDuMilieuComplet + " " + nomDeFamilleComplet);
+            console.log("Votre nom au complet est : "+complet+"");
+        }
+
+        function calculNomUtilisateur() {
+            let utilisateur = (nom.charAt(0) + milieu.charAt(0) + famille);
+            console.log("Votre nom d'utilisatuer est : "+utilisateur.toLowerCase()+"");
+        }
+    </script>
+  </form>
+</body>
+</html>

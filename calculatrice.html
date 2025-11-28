@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Calculatrice</title>
+</head>
+<body>
+  <!-- Entrés des utilisateurs -->
+  <form>
+    <h1>Calculatrice</h1>
+    <!-- textbox pour le premier nombre -->
+    <label for="num1">Entre un nombre:</label>
+    <input type="number" id="num1">
+    <br><br>
+
+     <!-- textbox pour le deuxième nombre -->
+    <label for="num2">Entre un deuxième nombre:</label>
+    <input type="number" id="num2">
+    <br><br>
+
+    <!-- radio button pour l'opération -->
+    <label for="radOperation">Opération:</label>
+    <input type="radio" name="operation" value="add">Addition
+    <input type="radio" name="operation" value="sous">Soustraction
+    <input type="radio" name="operation" value="mul">Multiplication
+    <input type="radio" name="operation" value="div">Division
+    <input type="radio" name="operation" value="mod">Modulo
+    <input type="radio" name="operation" value="ex">Exposant
+    <br><br>
+
+    <!-- bouton pour calculer -->
+    <input type="button" id="btnCalcul" onclick="calcul()"  value="Entre">
+    
+    <!-- Création d'une section pour l'affichage des résultats -->
+    <br><br>
+
+    <div id="divAffiche">
+    </div>
+ 
+    <script>
+        function calcul() {
+          let affiche = document.getElementById("divAffiche")
+          let resultat = 0;
+          let nom1 = parseInt(document.getElementById("num1").value);
+          let nom2 = parseInt(document.getElementById("num2").value);
+          
+          //Pour déterminer lequel des radio buttons est coché
+            let radiosoperation = document.getElementsByName("operation");
+            for (let i = 0; i < radiosoperation.length; i++) {
+                if (radiosoperation[i].checked) {
+                  operation = radiosoperation[i].value;
+                }
+            }
+        
+            //Calculer l'opération
+            if (operation == "add") {
+                resultat = nom1 + nom2;
+            } else if (operation == "sous") {
+                resultat = nom1 - nom2;
+            } else if (operation == "mul") {
+                resultat = nom1 * nom2;
+            } else if (operation == "div") {
+                resultat = nom1 / nom2;
+            } else if (operation == "mod") {
+                resultat = nom1 % nom2;
+            } else {
+                resultat = nom1 ** nom2;
+            }
+
+            //Affiche la réponse
+            let message = "La réponse est : " + resultat;
+            affiche.innerHTML = message;
+        }
+    </script>
+  </form>
+</body>
+</html>
